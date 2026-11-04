@@ -26,7 +26,7 @@ ENGINES = ("pyrit", "http", "mock")
 # Per-model pricing, USD per 1M tokens: (input, output).
 MODEL_PRICING = {
     "unst33r-flash": (0.50, 1.50),
-    "unst33r-deepseek": (1.20, 3.20),
+    "unst33r-deepseek": (0.15, 0.5625),
     "unst33r-pro": (2.50, 4.50),
 }
 

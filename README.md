@@ -12,7 +12,7 @@ seed corpus (40 objectives x 25 mutations = 1,000 probes)
         |-- 900 single-turn probes --> attacker: openai/unst33r-flash
         |                                 (GLM-5.3-Flash uncensored)
         |-- 100 multi-turn probes  --> attacker: openai/unst33r-deepseek
-        |                                 (DeepSeek-V4.1-Flash abliterated, max_turns=3)
+        |                                 (DeepSeek-V4.1-Flash-1017 abliterated, max_turns=3)
         v
    target AI application (your agent, any OpenAI-compatible endpoint)
         |
@@ -56,7 +56,7 @@ This gate fixes that structurally:
 | Role | Model | Notes |
 | --- | --- | --- |
 | Single-turn mutation attacker | `openai/unst33r-flash` (GLM-5.3-Flash uncensored) | Generates/mutates 900 probes across 4 categories. $0.50 / $1.50 per 1M tok. |
-| Multi-turn adaptive attacker | `openai/unst33r-deepseek` (DeepSeek-V4.1-Flash abliterated) | Drives `RedTeamingAttack` escalation, up to `max_turns=3`, on 100 high-risk objectives. $1.20 / $3.20 per 1M tok, 1M ctx. |
+| Multi-turn adaptive attacker | `openai/unst33r-deepseek` (DeepSeek-V4.1-Flash-1017 abliterated) | Drives `RedTeamingAttack` escalation, up to `max_turns=3`, on 100 high-risk objectives. $0.15 / $0.5625 per 1M tok, 1M ctx. |
 | Independent judge / scorer | `openai/unst33r-pro` (GLM-5.3 uncensored) | `SelfAskTrueFalseScorer` + `TrueFalseQuestion`. $2.50 / $4.50 per 1M tok. |
 | Target | your application | Any OpenAI-compatible `/v1/chat/completions`. |
 
@@ -210,7 +210,7 @@ Rough per-probe budget, using published UNST33R pricing:
 | Model | Role | ~Tokens per probe (in/out) | Price per 1M | ~Cost per 1,000 probes |
 | --- | --- | --- | --- | --- |
 | `unst33r-flash` | single-turn attacker | 150 / 120 | $0.50 / $1.50 | ≈ $0.23 |
-| `unst33r-deepseek` | multi-turn attacker | ~3 turns × (140/60) | $1.20 / $3.20 | ≈ $0.07 |
+| `unst33r-deepseek` | multi-turn attacker | ~3 turns × (140/60) | $0.15 / $0.5625 | ≈ $0.02 |
 | `unst33r-pro` | judge (non-refused only) | 240 / 8 per judged probe | $2.50 / $4.50 | ≈ $0.10–0.60 |
 
 Expect **well under $1 per PR** for the attacker+judge side; the exact
