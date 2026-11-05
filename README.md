@@ -1,3 +1,5 @@
+<p align="center"><img src="logo.svg" alt="UNST33R" width="420"></p>
+
 # PyRIT CI/CD Security Gate
 
 Reusable GitHub Action + Python CLI that runs Microsoft's [PyRIT](https://github.com/microsoft/PyRIT)
